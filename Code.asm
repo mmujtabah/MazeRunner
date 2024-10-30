@@ -42,39 +42,39 @@ display_maze_1:
 	
 	mov cx, 20
 
-	l1:
+	l1_maze_1:
 		mov [es:di], ax
 		add di, 2
-		loop l1
+		loop l1_maze_1
 	
 	mov cx, 19
 	
-	l2:
+	l2_maze_1:
 		mov [es:di], ax
 		add di, 160
-		loop l2
+		loop l2_maze_1
 	
 	mov cx, 20
 	
-	l3:
+	l3_maze_1:
 		mov [es:di], ax
 		sub di, 2
-		loop l3
+		loop l3_maze_1
 	
 	mov cx, 19
 	
-	l4:
+	l4_maze_1:
 		mov [es:di], ax
 		sub di, 160
-		loop l4
+		loop l4_maze_1
 	
 	add di, 320
 	mov cx, 18
 	
-	l5:
+	l5_maze_1:
 		mov [es:di], ax
 		add di, 2
-		loop l5
+		loop l5_maze_1
 	
 	sub di, 32
 	add di, 160
