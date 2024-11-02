@@ -41,11 +41,9 @@ display_maze_1:
 	mov ah, 0x02 	; black background with green foreground color
 	
 	mov cx, 20
-
-	l1_maze_1:
-		mov [es:di], ax
-		add di, 2
-		loop l1_maze_1
+	
+	cld
+	rep stosw
 	
 	mov cx, 19
 	
@@ -55,11 +53,8 @@ display_maze_1:
 		loop l2_maze_1
 	
 	mov cx, 20
-	
-	l3_maze_1:
-		mov [es:di], ax
-		sub di, 2
-		loop l3_maze_1
+	std
+	rep stosw
 	
 	mov cx, 19
 	
@@ -71,15 +66,12 @@ display_maze_1:
 	add di, 320
 	mov cx, 18
 	
-	l5_maze_1:
-		mov [es:di], ax
-		add di, 2
-		loop l5_maze_1
+	cld
+	rep stosw
 	
 	sub di, 32
 	add di, 160
 	mov [es:di], ax
-	
 	
 	pop di
 	pop si
@@ -92,12 +84,10 @@ display_maze_1:
 	pop bp
 	ret
 	
-
 start:
 	call clrscreen
 	call display_maze_1
-
-mov ax, 0x4c00
-int 0x21
+	mov ax, 0x4c00
+	int 0x21
 
 VIDEO_MEMORY equ 0xb800
