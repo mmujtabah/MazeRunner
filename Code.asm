@@ -141,12 +141,12 @@ display_maze_1:
 	mov [es:di], ax
 	
 	sub di, 2
-	mov byte [es:di], 0x9B
-	mov byte [es:di+1], 0x8E
+	mov byte [es:di], 0x9B      ; store Cent sign as treasure
+	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
 	
 	add di, 152	
-	mov byte [es:di], 0xE9
-	mov byte [es:di+1], 0x04
+	mov byte [es:di], 0xE8		; store Capital phi as enemy 
+	mov byte [es:di+1], 0x04	; black background with red foreground color
 	
 	add di, 2
 	mov cx, 5
