@@ -47,10 +47,10 @@ display_maze_1:
 	
 	mov cx, 19
 	
-	l2_maze_1:
+	l1_maze_1:
 		mov [es:di], ax
 		add di, 160
-		loop l2_maze_1
+		loop l1_maze_1
 	
 	mov cx, 20
 	std
@@ -58,20 +58,110 @@ display_maze_1:
 	
 	mov cx, 19
 	
-	l4_maze_1:
+	l2_maze_1:
 		mov [es:di], ax
 		sub di, 160
-		loop l4_maze_1
+		loop l2_maze_1
 	
 	add di, 320
 	mov cx, 18
-	
 	cld
 	rep stosw
 	
-	sub di, 32
+	add di, 158
+	mov [es:di], ax
+	
+	sub di, 8
+	mov [es:di], ax
+
+	sub di, 22
+	mov [es:di], ax
+	
+	add di, 160
+	mov cx, 3
+	cld
+	rep stosw
+	
+	add di, 2
+	mov cx, 6
+	cld
+	rep stosw
+	
+	add di, 6
+	mov [es:di], ax
+	
+	add di, 4
+	mov [es:di], ax
+	
 	add di, 160
 	mov [es:di], ax
+	
+	sub di, 4
+	mov cx, 3
+	std 
+	rep stosw
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	sub di, 4
+	mov [es:di], ax
+	
+	sub di, 14
+	mov [es:di], ax
+	
+	add di, 160
+	mov cx, 6
+	cld
+	rep stosw
+	
+	add di, 2
+	mov [es:di], ax
+	
+	add di, 4
+	mov [es:di], ax
+	
+	add di, 8
+	mov cx, 3
+	cld
+	rep stosw
+	
+	add di, 158
+	mov [es:di], ax
+	
+	sub di, 8
+	mov cx, 3
+	std
+	rep stosw
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	sub di, 6
+	mov [es:di], ax
+	
+	sub di, 2
+	mov byte [es:di], 0x9B
+	mov byte [es:di+1], 0x8E
+	
+	add di, 152	
+	mov byte [es:di], 0xE9
+	mov byte [es:di+1], 0x04
+	
+	add di, 2
+	mov cx, 5
+	cld
+	rep stosw
+	
+	add di, 2
+	mov cx, 2
+	cld
+	rep stosw
+	
+	add di, 10
+	mov cx, 3
+	cld
+	rep stosw
 	
 	pop di
 	pop si
