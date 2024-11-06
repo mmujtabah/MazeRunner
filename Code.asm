@@ -333,7 +333,11 @@ display_maze_1:
 		mov [es:di], ax
 		loop l4_maze_1
 	
-	sub di, 4
+	sub di, 2
+	mov byte [es:di], 0xE8		; store Capital phi as enemy 
+	mov byte [es:di+1], 0x04	; black background with red foreground color
+	
+	sub di, 2
 	mov [es:di], ax
 	
 	sub di, 4
