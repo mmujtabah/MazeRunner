@@ -52,8 +52,13 @@ display_maze_1:
 		add di, 160
 		loop l1_maze_1
 	
-	mov cx, 20
+	mov cx, 12
 	std
+	rep stosw
+	
+	sub di, 2
+	mov cx, 7
+	std 
 	rep stosw
 	
 	mov cx, 19
@@ -162,6 +167,188 @@ display_maze_1:
 	mov cx, 3
 	cld
 	rep stosw
+	
+	add di, 158
+	mov [es:di], ax
+	
+	sub di, 4
+	mov cx, 4
+	std
+	rep stosw
+	
+	sub di, 2
+	mov cx, 2
+	std
+	rep stosw
+	
+	sub di, 4
+	mov [es:di], ax
+	
+	add di, 150
+	mov cx, 4
+	cld
+	rep stosw
+	
+	add di, 2
+	mov cx, 2
+	cld
+	rep stosw
+	
+	add di, 2
+	mov [es:di], ax
+	
+	add di, 8
+	mov [es:di], ax
+	
+	add di, 4
+	mov byte [es:di], 0x9C		; store Pound sign as treasure
+	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
+	
+	add di, 4
+	mov [es:di], ax
+	
+	add di, 160
+	mov cx, 3
+	std
+	rep stosw
+	
+	mov byte [es:di], 0xE8		; store Capital phi as enemy 
+	mov byte [es:di+1], 0x04	; black background with red foreground color
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	sub di, 4
+	mov [es:di], ax
+	
+	sub di, 4
+	mov [es:di], ax
+	
+	sub di, 4
+	mov cx, 2
+	std
+	rep stosw
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	add di, 154
+	mov cx, 2
+	cld
+	rep stosw
+	
+	add di, 2
+	mov [es:di], ax
+	
+	add di, 10
+	mov [es:di], ax
+	
+	add di, 4
+	mov [es:di], ax
+	
+	add di, 12
+	mov [es:di], ax
+	
+	add di, 160
+	mov [es:di], ax
+	
+	sub di, 4
+	mov cx, 5
+	std
+	rep stosw
+	
+	sub di, 2
+	mov cx, 4
+	std
+	rep stosw
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	add di, 156
+	mov cx, 3
+	cld
+	rep stosw
+	
+	add di, 2
+	mov [es:di], ax
+	
+	add di, 6
+	mov [es:di], ax
+	
+	mov cx, 2
+	
+	l3_maze_1:
+		add di, 8
+		mov [es:di], ax
+		loop l3_maze_1
+	
+	add di, 160
+	mov cx, 3
+	std
+	rep stosw
+	
+	sub di, 2
+	mov cx, 3
+	std
+	rep stosw
+	
+	mov byte [es:di], 0xE8		; store Capital phi as enemy 
+	mov byte [es:di+1], 0x04	; black background with red foreground color
+	
+	sub di, 2
+	mov cx, 2
+	std
+	rep stosw
+	
+	sub di, 2
+	mov [es:di], ax
+	
+	sub di, 8
+	mov [es:di], ax
+	
+	add di, 164
+	mov [es:di], ax
+	
+	add di, 10
+	mov [es:di], ax
+	
+	add di, 6
+	mov byte [es:di], 0x9B      ; store Cent sign as treasure
+	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
+	
+	add di, 2
+	mov [es:di], ax
+	
+	add di, 4
+	mov [es:di], ax
+	
+	add di, 164
+	mov [es:di], ax
+	
+	mov cx, 2
+	
+	l4_maze_1:
+		sub di, 4
+		mov [es:di], ax
+		loop l4_maze_1
+	
+	sub di, 4
+	mov [es:di], ax
+	
+	sub di, 4
+	mov cx, 8
+	std
+	rep stosw
+	
+	add di, 176
+	mov [es:di], ax
+	
+	add di, 4
+	mov [es:di], ax
+	
+	add di, 12
+	mov [es:di], ax
 	
 	pop di
 	pop si
