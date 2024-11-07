@@ -137,11 +137,36 @@ display_maze_2:
 	rep stosw
 	
 	sub di, 148
-	mov cx, 4
+	mov cx, 3
 	l9_maze2:
 	mov [es:di], ax
 	sub di, 160
 	loop l9_maze2
+	
+	add di, 4
+	mov cx, 3
+	rep stosw
+	
+	add di, 166
+	mov cx, 6
+	l11_maze2:
+	mov [es:di], ax
+	add di, 160
+	loop l11_maze2
+	
+	sub di, 160
+	mov cx, 5
+	rep stosw
+	
+	add di, 162
+	mov cx, 6
+	l12_maze2:
+	mov [es:di], ax
+	add di, 160
+	
+	sub di, 160
+	mov cx, 5
+	rep stosw
 	
 	
 	pop di
