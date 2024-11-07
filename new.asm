@@ -168,6 +168,12 @@ display_maze_2:
 	mov cx, 5
 	rep stosw
 	
+	sub di, 776
+	mov [es:di], bx
+	
+	mov bl, 0xE3
+	mov bh, 0x0c
+	mov [es:di], bx   ; pie printing
 	
 	pop di
 	pop si
