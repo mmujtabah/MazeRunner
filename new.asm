@@ -88,10 +88,9 @@ display_maze_1:
 	
 	mov cx, 8
 	
-	l5_maze2:
-	add di, 2
-	mov [es:di], ax
-	loop l5_maze2
+	cld
+	rep stosw
+	sub di, 2
 	
 	mov cx, 5
 	
@@ -101,10 +100,9 @@ display_maze_1:
 	loop l6_maze2
 	
 	mov cx, 9
-	l7_maze2:
-	sub di, 2
-	mov [es:di], ax
-	loop l7_maze2
+	std
+	rep stosw
+	add di, 2
 	
 	add di, 12
 	mov cx, 3
