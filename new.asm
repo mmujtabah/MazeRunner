@@ -22,7 +22,7 @@ clrscreen:
 	pop es
 	ret
 
-display_maze_1:
+display_maze_2:
 	push bp
 	mov bp, sp
 	push es
@@ -126,7 +126,52 @@ display_maze_1:
 	mov byte [es:di], 0xE8		; store Capital phi as enemy 
 	mov byte [es:di+1], 0x04	; black background with red foreground color
 	
-
+	add di, 484
+	mov bx, 0x0720
+	mov [es:di], bx
+	
+	sub di, 136
+	mov cx, 6
+	rep stosw
+	
+	sub di, 148
+	mov cx, 3
+	l9_maze2:
+	mov [es:di], ax
+	sub di, 160
+	loop l9_maze2
+	
+	add di, 4
+	mov cx, 3
+	rep stosw
+	
+	add di, 166
+	mov cx, 6
+	l11_maze2:
+	mov [es:di], ax
+	add di, 160
+	loop l11_maze2
+	
+	sub di, 160
+	mov cx, 5
+	rep stosw
+	
+	add di, 162
+	mov cx, 6
+	l12_maze2:
+	mov [es:di], ax
+	add di, 160
+	
+	sub di, 160
+	mov cx, 5
+	rep stosw
+	
+	sub di, 776
+	mov [es:di], bx
+	
+	mov bl, 0xE3
+	mov bh, 0x0c
+	mov [es:di], bx   ; pie printing
 	
 	pop di
 	pop si
@@ -141,7 +186,7 @@ display_maze_1:
 	
 start:
 	call clrscreen
-	call display_maze_1
+	call display_maze_2
 	mov ax, 0x4c00
 	int 0x21
 
