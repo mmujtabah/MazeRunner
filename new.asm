@@ -1,38 +1,35 @@
 [org 0x100]           
 jmp start
-	;     1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20
-maze db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-     db  1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1
-     db  1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1
-     db  1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1
-     db  1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1
-     db  1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1
-     db  1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1
-     db  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1
-     db  1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1
-     db  1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
-     db  1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1
-     db  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
-     db  1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-     db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
-     db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1
-     db  1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
-     db  1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1
-     db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
-     db  1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1
-     db  1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+;           1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20
+maze2:	db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		db  1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1
+		db  1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1
+		db  1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1
+		db  1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1
+		db  1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 3, 1
+		db  1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1
+		db  1, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 1, 0, 1
+		db  1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1
+		db  1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 4, 1
+		db  1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1
+		db  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+		db  1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+		db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 1
+		db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1
+		db  1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 3, 0, 0, 1
+		db  1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1
+		db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+		db  1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1
+		db  1, 0, 5, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 
-rows dw 20            
-cols dw 20           
-
-wall_char db 178        ; Wall character for maze walls
-space_char db ' '       ; Space character for empty spaces
+rows dw 20              ; Number of rows
+cols dw 20              ; Number of columns
 
 clrscreen:
     push ax
     push cx
 	
-    mov ax, 0600h         
+    mov ax, 0600h          
     mov bh, 07h            
     mov cx, 0000h         
     mov dx, 184fh         
@@ -42,59 +39,100 @@ clrscreen:
     pop ax
     ret
 
-display_maze2:
-    push ax
-    push bx
-    push cx
-    push dx
-    push si
-    push di
-    
-    mov ax, VIDEO_MEMORY    
-    mov es, ax
-    mov di, 160       
-    
-    mov cx, [rows]
-    mov si, maze      
-    
-display_row:
-    push cx
-    mov cx, [cols]
-    
-display_column:
-    lodsb            
-    cmp al, 1
-    je draw_wall
-    mov al, [space_char]
-    jmp draw_char
-    
-draw_wall:
-    mov al, [wall_char]
+display_maze_2:
+	push bp
+	mov bp, sp
+	pusha
 
-draw_char:
-    mov ah, 02h       
-    mov [es:di], ax   
-    add di, 2         
-    loop display_column
-    
-    pop cx
-    add di, 160 - (40) ; move di to next line in vid memory
-    loop display_row
-    
-    pop di
-    pop si
-    pop dx
-    pop cx
-    pop bx
-    pop ax
-    ret
+	mov ax, VIDEO_MEMORY        ; Set video memory segment (color text mode)
+	mov es, ax
+	mov di, 160            ; Start at the top-left corner of the screen
 
+	mov cx, 0           
+	mov si, [bp+8]
+	mov dx, [bp+4]
+	shl dx, 1
+
+print_row:
+	mov bx, 0          
+
+print_column:
+	mov al, [si]
+	inc si
+	cmp al, 1
+	je print_wall
+	cmp al, 2
+	je print_player
+	cmp al, 3
+	je print_treasure
+	cmp al, 4
+	je print_enemy
+	cmp al, 5
+	je print_pie
+	jmp print_space
+
+print_wall:
+	mov al, 178
+	mov ah, 0x02
+	mov [es:di], ax
+	jmp next_coulmn
+
+print_enemy:
+	mov al, 0xE8
+	mov ah, 0x04
+	mov [es:di], ax
+	jmp next_coulmn
+
+print_treasure:
+	mov al, 0x9B
+	mov ah, 0x8E
+	mov [es:di], ax
+	jmp next_coulmn
+
+print_player:
+	mov al, 0x02
+	mov ah, 0x03
+	mov [es:di], ax
+	jmp next_coulmn
+
+print_pie:
+	mov al, 0xE3
+	mov ah, 0x06
+	mov [es:di], ax
+	jmp next_coulmn
+
+print_space:
+	mov al, 0x20
+	mov ah, 0x02
+	mov [es:di], ax
+
+next_coulmn:
+	add di, 2
+	inc bx
+	cmp bx, [bp+6]
+	jl print_column
+
+	add di, 160
+	sub di, dx
+	add cx, 1
+	cmp cx, [bp+4]
+	jl print_row
+
+	popa
+	mov sp, bp
+	pop bp
+	ret 6
 
 start:
-    call clrscreen       ; Clear the screen
-	call display_maze2
+    call clrscreen
+	mov ax, maze2
+	push ax
+	push word [rows]
+	push word [cols] 
+	call display_maze_2
+
 exit:
 	mov ax, 0x4c00
 	int 21h
-	
+
 VIDEO_MEMORY equ 0xb800
