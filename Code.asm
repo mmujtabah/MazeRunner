@@ -1,6 +1,32 @@
-[org 0x0100]
-
+org 0x100              
 jmp start
+
+maze1 db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1       
+     db 1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1       
+     db 1,0,1,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,1,0,1,1       
+     db 1,0,1,0,0,0,1,0,1,0,0,0,1,4,0,0,1,0,1,0,1,1       
+     db 1,0,1,1,1,0,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,1
+	 db 1,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,0,0,1,1
+	 db 1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,3,1,1,1,0,1,1
+	 db 1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1
+	 db 1,0,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1
+	 db 1,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,1
+	 db 1,0,1,0,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,1,1,1
+	 db 1,0,1,0,0,0,1,0,0,0,0,0,1,0,1,0,1,0,0,0,1,1
+	 db 1,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1
+	 db 1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,1        
+	 db 1,1,1,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1
+	 db 1,0,0,0,0,0,0,2,1,0,1,0,1,0,1,0,0,0,0,0,1,1
+	 db 1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,1
+	 db 1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,4,0,3,1,1
+	 db 1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,1,1,3,1,1,1,1
+	 db 1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
+	 db 1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1
+	 db 1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+
+rows1 dw 22              ; Number of rows
+cols1 dw 22              ; Number of columns
+
 
 clrscreen:
 	push es
@@ -8,7 +34,7 @@ clrscreen:
 	push cx
 	push di
 	
-	mov ax, VIDEO_MEMORY
+	mov ax, VIDEO_MEMORY 
 	mov es, ax
 	xor di, di
 	mov ax, 0x0720
@@ -22,7 +48,7 @@ clrscreen:
 	pop es
 	ret
 
-display_maze_1:
+display_maze:
 	push bp
 	mov bp, sp
 	push es
@@ -33,326 +59,72 @@ display_maze_1:
 	push si
 	push di
 	
-	mov ax, VIDEO_MEMORY
+	mov ax, VIDEO_MEMORY        ; Set video memory segment (color text mode)
 	mov es, ax
-	xor di, di
-	mov di, 322
-	mov al, 178  	; store ▓ character for maze boundary
-	mov ah, 0x02 	; black background with green foreground color
-	
-	mov cx, 20
-	
-	cld
-	rep stosw
-	
-	mov cx, 19
-	
-	l1_maze_1:
-		mov [es:di], ax
-		add di, 160
-		loop l1_maze_1
-	
-	mov cx, 12
-	std
-	rep stosw
-	
-	sub di, 2
-	mov cx, 7
-	std 
-	rep stosw
-	
-	mov cx, 19
-	
-	l2_maze_1:
-		mov [es:di], ax
-		sub di, 160
-		loop l2_maze_1
-	
-	add di, 320
-	mov cx, 18
-	cld
-	rep stosw
-	
-	add di, 158
-	mov [es:di], ax
-	
-	sub di, 8
-	mov [es:di], ax
+	mov di, 0            		; Start at the top-left corner of the screen
 
-	sub di, 22
-	mov [es:di], ax
-	
-	add di, 160
-	mov cx, 3
-	cld
-	rep stosw
-	
-	add di, 2
-	mov cx, 6
-	cld
-	rep stosw
-	
-	add di, 6
-	mov [es:di], ax
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 160
-	mov [es:di], ax
-	
-	sub di, 4
-	mov cx, 3
-	std 
-	rep stosw
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	sub di, 4
-	mov [es:di], ax
-	
-	sub di, 14
-	mov [es:di], ax
-	
-	add di, 160
-	mov cx, 6
-	cld
-	rep stosw
-	
-	add di, 2
-	mov [es:di], ax
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 8
-	mov cx, 3
-	cld
-	rep stosw
-	
-	add di, 158
-	mov [es:di], ax
-	
-	sub di, 8
-	mov cx, 3
-	std
-	rep stosw
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	sub di, 6
-	mov [es:di], ax
-	
-	sub di, 2
-	mov byte [es:di], 0x9B      ; store Cent sign as treasure
-	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
-	
-	add di, 152	
-	mov byte [es:di], 0xE8		; store Capital phi as enemy 
-	mov byte [es:di+1], 0x04	; black background with red foreground color
-	
-	add di, 2
-	mov cx, 5
-	cld
-	rep stosw
-	
-	add di, 2
-	mov cx, 2
-	cld
-	rep stosw
-	
-	add di, 10
-	mov cx, 3
-	cld
-	rep stosw
-	
-	add di, 158
-	mov [es:di], ax
-	
-	sub di, 4
-	mov cx, 4
-	std
-	rep stosw
-	
-	sub di, 2
-	mov cx, 2
-	std
-	rep stosw
-	
-	sub di, 4
-	mov [es:di], ax
-	
-	add di, 150
-	mov cx, 4
-	cld
-	rep stosw
-	
-	add di, 2
-	mov cx, 2
-	cld
-	rep stosw
-	
-	add di, 2
-	mov [es:di], ax
-	
-	add di, 8
-	mov [es:di], ax
-	
-	add di, 4
-	mov byte [es:di], 0x9C		; store Pound sign as treasure
-	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 160
-	mov cx, 3
-	std
-	rep stosw
-	
-	mov byte [es:di], 0xE8		; store Capital phi as enemy 
-	mov byte [es:di+1], 0x04	; black background with red foreground color
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	sub di, 4
-	mov [es:di], ax
-	
-	sub di, 4
-	mov [es:di], ax
-	
-	sub di, 4
-	mov cx, 2
-	std
-	rep stosw
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	add di, 154
-	mov cx, 2
-	cld
-	rep stosw
-	
-	add di, 2
-	mov [es:di], ax
-	
-	add di, 10
-	mov [es:di], ax
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 12
-	mov [es:di], ax
-	
-	add di, 160
-	mov [es:di], ax
-	
-	sub di, 4
-	mov cx, 5
-	std
-	rep stosw
-	
-	sub di, 2
-	mov cx, 4
-	std
-	rep stosw
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	add di, 156
-	mov cx, 3
-	cld
-	rep stosw
-	
-	add di, 2
-	mov [es:di], ax
-	
-	add di, 6
-	mov [es:di], ax
-	
-	mov cx, 2
-	
-	l3_maze_1:
-		add di, 8
-		mov [es:di], ax
-		loop l3_maze_1
-	
-	add di, 160
-	mov cx, 3
-	std
-	rep stosw
-	
-	sub di, 2
-	mov cx, 3
-	std
-	rep stosw
-	
-	mov byte [es:di], 0xE8		; store Capital phi as enemy 
-	mov byte [es:di+1], 0x04	; black background with red foreground color
-	
-	sub di, 2
-	mov cx, 2
-	std
-	rep stosw
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	sub di, 8
-	mov [es:di], ax
-	
-	add di, 164
-	mov [es:di], ax
-	
-	add di, 10
-	mov [es:di], ax
-	
-	add di, 6
-	mov byte [es:di], 0x9B      ; store Cent sign as treasure
-	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
-	
-	add di, 2
-	mov [es:di], ax
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 164
-	mov [es:di], ax
-	
-	mov cx, 2
-	
-	l4_maze_1:
-		sub di, 4
-		mov [es:di], ax
-		loop l4_maze_1
-	
-	sub di, 2
-	mov byte [es:di], 0xE8		; store Capital phi as enemy 
-	mov byte [es:di+1], 0x04	; black background with red foreground color
-	
-	sub di, 2
-	mov [es:di], ax
-	
-	sub di, 4
-	mov cx, 8
-	std
-	rep stosw
-	
-	add di, 176
-	mov [es:di], ax
-	
-	add di, 4
-	mov [es:di], ax
-	
-	add di, 12
-	mov [es:di], ax
+	mov cx, 0            
+	mov si, [bp+8]
+	mov dx, [bp+4]
+	shl dx, 1
+	
+	print_row:
+		mov bx, 0           
+
+		print_column:
+			mov al, [si]
+			inc si
+			cmp al, 1
+			je print_wall
+			cmp al, 3
+			je print_enemy
+			cmp al, 4
+			je print_treasure
+			cmp al, 2
+			je print_player
+			jmp print_space
+			
+			print_wall:
+				mov al, 178
+				mov ah, 0x02
+				mov [es:di], ax
+				jmp next_coulmn
+			
+			print_enemy:
+				mov al, 0xE8
+				mov ah, 0x04
+				mov [es:di], ax
+				jmp next_coulmn
+
+			print_treasure:
+				mov al, 0x9B
+				mov ah, 0x8E
+				mov [es:di], ax
+				jmp next_coulmn
+			
+			print_player:
+				mov al, 0x02
+				mov ah, 0x03
+				mov [es:di], ax
+				jmp next_coulmn
+
+			print_space:
+				mov al, 0x20
+				mov ah, 0x02
+				mov [es:di], ax
+			
+			next_coulmn:
+				add di, 2
+				inc bx
+				cmp bx, [bp+6]
+				jl print_column
+				
+				add di, 160
+				sub di, dx
+				add cx, 1
+				cmp cx, [bp+4]
+				jl print_row
+		
 	
 	pop di
 	pop si
@@ -363,12 +135,19 @@ display_maze_1:
 	pop es
 	mov sp, bp
 	pop bp
-	ret
-	
+	ret 6
+
 start:
-	call clrscreen
-	call display_maze_1
-	mov ax, 0x4c00
-	int 0x21
+    call clrscreen
+	mov ax, maze
+	push maze1
+	push word [rows1]
+	push word [cols1]  
+	call display_maze
+
+
+exit:
+mov ax, 0x4c00
+int 21h
 
 VIDEO_MEMORY equ 0xb800
