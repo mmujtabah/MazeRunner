@@ -17,12 +17,12 @@ maze1 db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 	 db 1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,1,1        
 	 db 1,1,1,0,1,1,1,1,1,0,1,0,1,0,1,1,1,1,1,0,1,1
 	 db 1,0,0,0,0,0,0,2,1,0,1,0,1,0,1,0,0,0,0,0,1,1
-	 db 1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,0,1,1
-	 db 1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,4,0,3,1,1
+	 db 1,1,1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,3,1,1
+	 db 1,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,4,0,0,1,1
 	 db 1,0,1,0,1,0,1,1,1,1,1,0,1,1,1,1,1,3,1,1,1,1
 	 db 1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
 	 db 1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1,0,1,1
-	 db 1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	 db 1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 rows1 dw 22              ; Number of rows
 cols1 dw 22              ; Number of columns
@@ -76,12 +76,14 @@ display_maze:
 			inc si
 			cmp al, 1
 			je print_wall
+			cmp al, 2
+			je print_player
 			cmp al, 3
 			je print_enemy
 			cmp al, 4
 			je print_treasure
-			cmp al, 2
-			je print_player
+			cmp al, 5
+			je print_end
 			jmp print_space
 			
 			print_wall:
@@ -105,6 +107,12 @@ display_maze:
 			print_player:
 				mov al, 0x02
 				mov ah, 0x03
+				mov [es:di], ax
+				jmp next_coulmn
+			
+			print_end:
+				mov al, 0xE3
+				mov ah, 0x06
 				mov [es:di], ax
 				jmp next_coulmn
 
@@ -139,7 +147,6 @@ display_maze:
 
 start:
     call clrscreen
-	mov ax, maze
 	push maze1
 	push word [rows1]
 	push word [cols1]  
