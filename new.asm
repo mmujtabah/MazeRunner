@@ -1,193 +1,100 @@
-[org 0x0100]
-
+[org 0x100]           
 jmp start
+	;     1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20
+maze db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+     db  1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1
+     db  1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1
+     db  1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1
+     db  1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1
+     db  1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1
+     db  1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1
+     db  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1
+     db  1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1
+     db  1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+     db  1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1
+     db  1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+     db  1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+     db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+     db  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1
+     db  1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1
+     db  1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1
+     db  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1
+     db  1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1
+     db  1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+
+rows dw 20            
+cols dw 20           
+
+wall_char db 178        ; Wall character for maze walls
+space_char db ' '       ; Space character for empty spaces
 
 clrscreen:
-	push es
-	push ax
-	push cx
-	push di
+    push ax
+    push cx
 	
-	mov ax, VIDEO_MEMORY
-	mov es, ax
-	xor di, di
-	mov ax, 0x0720
-	mov cx, 2000
-	cld
-	rep stosw
+    mov ax, 0600h         
+    mov bh, 07h            
+    mov cx, 0000h         
+    mov dx, 184fh         
+    int 10h             
 	
-	pop di
-	pop cx
-	pop ax
-	pop es
-	ret
+    pop cx
+    pop ax
+    ret
 
-display_maze_2:
-	push bp
-	mov bp, sp
-	push es
-	push ax
-	push bx
-	push cx
-	push dx
-	push si
-	push di
-	
-	mov ax, VIDEO_MEMORY
-	mov es, ax
-	xor di, di
-	mov di, 322
-	mov al, 178  	; store ▓ character for maze boundary
-	mov ah, 0x02 	; black background with green foreground color
-	
-	mov cx, 20
-	
-	cld
-	rep stosw  ; draws the top boundary of maze
-	
-	mov cx, 19
-	
-	l1_maze_2:
-		mov [es:di], ax  ; draws left boundary of maze
-		add di, 160
-		loop l1_maze_2
-	
-	mov cx, 20
-	std
-	rep stosw   ; draws bottom boundary of maze
-	
-	mov cx, 19
-	
-	l2_maze_2:
-		mov [es:di], ax    ; draws the right boundary of maze
-		sub di, 160
-		loop l2_maze_2
-	
-	add di, 360
-	mov cx, 18
-	std
-	rep stosw
-	
-	add di, 182
-	mov [es:di], ax
-	mov cx, 3
-	
-	l3_maze2:
-	add di, 160
-	mov [es:di], ax
-	loop l3_maze2
-	
-	add di, 138
-	mov [es:di], ax
-	mov cx, 3
-	
-	l4_maze2:
-	sub di, 160
-	mov [es:di], ax
-	loop l4_maze2
-	
-	mov cx, 8
-	
-	cld
-	rep stosw
-	sub di, 2
-	
-	mov cx, 5
-	
-	l6_maze2:
-	add di, 160
-	mov [es:di], ax
-	loop l6_maze2
-	
-	mov cx, 9
-	std
-	rep stosw
-	add di, 2
-	
-	add di, 12
-	mov cx, 3
-	l8_maze2:
-	sub di, 160
-	mov [es:di], ax
-	loop l8_maze2
-	
-	sub di, 2
-	mov [es:di], ax
-	sub di, 2
-	mov [es:di], ax
-	add di, 160
-	mov [es:di], ax
-	
-	add di, 160
-	mov byte [es:di], 0x9B      ; store Cent sign as treasure
-	mov byte [es:di+1], 0x8E	; black blink background with yellow foreground color
-	
-	sub di, 328
-	mov byte [es:di], 0xE8		; store Capital phi as enemy 
-	mov byte [es:di+1], 0x04	; black background with red foreground color
-	
-	add di, 484
-	mov bx, 0x0720
-	mov [es:di], bx
-	
-	sub di, 136
-	mov cx, 6
-	rep stosw
-	
-	sub di, 148
-	mov cx, 3
-	l9_maze2:
-	mov [es:di], ax
-	sub di, 160
-	loop l9_maze2
-	
-	add di, 4
-	mov cx, 3
-	rep stosw
-	
-	add di, 166
-	mov cx, 6
-	l11_maze2:
-	mov [es:di], ax
-	add di, 160
-	loop l11_maze2
-	
-	sub di, 160
-	mov cx, 5
-	rep stosw
-	
-	add di, 162
-	mov cx, 6
-	l12_maze2:
-	mov [es:di], ax
-	add di, 160
-	
-	sub di, 160
-	mov cx, 5
-	rep stosw
-	
-	sub di, 776
-	mov [es:di], bx
-	
-	mov bl, 0xE3
-	mov bh, 0x0c
-	mov [es:di], bx   ; pie printing
-	
-	pop di
-	pop si
-	pop dx
-	pop cx
-	pop bx
-	pop ax
-	pop es
-	mov sp, bp
-	pop bp
-	ret
-	
+display_maze2:
+    push ax
+    push bx
+    push cx
+    push dx
+    push si
+    push di
+    
+    mov ax, VIDEO_MEMORY    
+    mov es, ax
+    mov di, 160       
+    
+    mov cx, [rows]
+    mov si, maze      
+    
+display_row:
+    push cx
+    mov cx, [cols]
+    
+display_column:
+    lodsb            
+    cmp al, 1
+    je draw_wall
+    mov al, [space_char]
+    jmp draw_char
+    
+draw_wall:
+    mov al, [wall_char]
+
+draw_char:
+    mov ah, 02h       
+    mov [es:di], ax   
+    add di, 2         
+    loop display_column
+    
+    pop cx
+    add di, 160 - (40) ; move di to next line in vid memory
+    loop display_row
+    
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+
+
 start:
-	call clrscreen
-	call display_maze_2
+    call clrscreen       ; Clear the screen
+	call display_maze2
+exit:
 	mov ax, 0x4c00
-	int 0x21
-
+	int 21h
+	
 VIDEO_MEMORY equ 0xb800
