@@ -31,6 +31,9 @@ cols1 dw 22              ; Number of columns
 rows dw 0                ; Stores copied maze rows 
 cols dw 0                ; Stores copied maze columns
 
+maze_chars db 178, 0x02, 0x9B, 0xE8, 0xE3, 0x20 ; Ascii of  game elements such as wall, player, treasure, enemy, pie and space
+maze_colors db 0x02, 0x03, 0x8E, 0x04, 0x06, 0x02  ; Respective colors of game elemnts
+
 section .bss
 maze_copy resb 22*22     ; Reserve 22*22 bytes for maze_copy
 player_pos resw 1
@@ -82,23 +85,17 @@ copy_maze:
     ret 6
 
 clrscreen:
-    push es
     push ax
     push cx
-    push di
-    
-    mov ax, VIDEO_MEMORY 
-    mov es, ax
-    xor di, di
-    mov ax, 0x0720
-    mov cx, 2000
-    cld
-    rep stosw
-    
-    pop di
+	
+    mov ax, 0600h          
+    mov bh, 07h            
+    mov cx, 0000h         
+    mov dx, 184fh         
+    int 10h             
+	
     pop cx
     pop ax
-    pop es
     ret
 
 display_maze:
@@ -140,38 +137,38 @@ display_maze:
 			jmp print_space
 			
 		print_wall:
-			mov al, 178
-			mov ah, 0x02
-			mov [es:di], ax
-			jmp next_column
-			
-		print_enemy:
-			mov al, 0xE8
-			mov ah, 0x04
-			mov [es:di], ax
-			jmp next_column
-
-		print_treasure:
-			mov al, 0x9B
-			mov ah, 0x8E
+			mov al, [maze_chars]
+			mov ah, [maze_colors]
 			mov [es:di], ax
 			jmp next_column
 			
 		print_player:
-			mov al, 0x02
-			mov ah, 0x03
+			mov al, [maze_chars + 1]
+			mov ah, [maze_colors + 1]
+			mov [es:di], ax
+			jmp next_column
+		
+		print_treasure:
+			mov al, [maze_chars + 2]
+			mov ah, [maze_colors + 2]
 			mov [es:di], ax
 			jmp next_column
 			
+		print_enemy:
+			mov al, [maze_chars + 3]
+			mov ah, [maze_colors + 3]
+			mov [es:di], ax
+			jmp next_column
+	
 		print_end:
-			mov al, 0xE3
-			mov ah, 0x06
+			mov al, [maze_chars + 4]
+			mov ah, [maze_colors + 4]
 			mov [es:di], ax
 			jmp next_column
 
 		print_space:
-			mov al, 0x20
-			mov ah, 0x02
+			mov al, [maze_chars + 5]
+			mov ah, [maze_colors + 5]
 			mov [es:di], ax
 
 		next_column:
@@ -276,7 +273,7 @@ end_move:
 delay:
 
 	push cx
-	mov cx, 3 ; change the values to increase delay time
+	mov cx, 2 ; change the values to increase delay time
 
 	delay_loop1:
 
