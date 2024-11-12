@@ -113,11 +113,14 @@ cols4 dw 40
 rows dw 0
 cols dw 0
 
+delay_count dw 0xFFFF
 section .bss
 maze_copy resb 22*40   ; Reserve 22*22 bytes for maze_copy
 player_pos resw 1
 last_key resb 1          ; Add storage for last key pressed
 first_time resb 1
+player_score resb 1
+exit_game resb 1
 section .text
 
 copy_maze:
@@ -241,7 +244,7 @@ display_maze:
 			jmp next_column
 
 		print_treasure:
-			mov al, 0x9B
+			mov al, 0x24	
 			mov ah, 0x8E
 			jmp next_column
 			
@@ -349,9 +352,33 @@ move_player:
 		cmp byte [maze_copy + si], 1  ; Check if new position is a wall
 		je end_move                   
 		cmp byte [maze_copy + si], 5  ; Check if player is on exit character
-		je exit
+		je play_exitgame
+		cmp byte [maze_copy + si], 3
+		je play_collision
+		cmp byte [maze_copy + si], 4
+		je play_treasure_sound
 		
-		
+	play_beep:
+		call beep
+		inc word [player_score]
+		jmp update_position
+	play_collision:
+		call collision_sound
+		mov word [exit_game], 1
+		jmp update_position
+	play_treasure_sound:
+		add word [player_score], 12
+		call treasure_sound
+		jmp update_position
+	play_exitgame:
+		cmp byte [maze_copy + si], 5
+		jne skip_victory_sound
+		call victory_sound
+		skip_victory_sound:
+		mov word [exit_game], 1
+	
+	
+	update_position:
 		; Update player position
 		mov byte [maze_copy + di], 0  ; Clear old position
 		mov byte [maze_copy + si], 2  ; Set new position
@@ -459,7 +486,238 @@ end_mazegen:
     pop cx
     pop bp
     ret
+	
+beep:
+    push ax   ; Save registers
+    
+    mov al, 182         ; Prepare for countdown value
+    out 43h, al        ; Send to control word register
+    
+    mov ax, 2153       ; Frequency value: 1193180/desired_frequency
+    out 42h, al        ; Output low byte
+    mov al, ah         ; Output high byte
+    out 42h, al
+    
+    in al, 61h         ; Get current value of port 61h
+    or al, 00000011b   ; Turn on bits 0 and 1
+    out 61h, al        ; Send new value to port
+    
+    ; Delay loop
+    mov cx, 0FFFFh     ; Set delay counter
+delay1_beep:
+    loop delay1_beep        ; Loop until cx = 0
+    
+    ; Turn off speaker
+    in al, 61h         ; Get current value
+    and al, 11111100b  ; Turn off bits 0 and 1
+    out 61h, al        ; Send new value
+    
+    pop ax            ; Restore registers
+    ret
 
+collision_sound:
+    push ax
+    push cx
+    push dx
+    push bx
+    
+    ; Initial impact sound (high to low)
+    mov cx, 80          ; Length of initial impact
+    mov bx, 300        ; Starting frequency
+impact_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, bx
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Turn speaker on
+    in al, 61h
+    or al, 00000011b
+    out 61h, al
+    
+    ; Dynamic delay
+    mov dx, 100
+delay1_collision:
+    dec dx
+    jnz delay1_collision
+    
+    add bx, 50         ; Change frequency
+    
+    loop impact_loop
+    
+    ; Explosion effect (rapid frequency modulation)
+    mov cx, 150        ; Length of explosion
+explosion_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, cx        ; Use counter for frequency
+    add ax, 1000      ; Base frequency
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Quick pulse effect
+    mov dx, 50
+delay2_collision:
+    dec dx
+    jnz delay2_collision
+    
+    ; Second frequency in pulse
+    mov al, 182
+    out 43h, al
+    mov ax, cx
+    add ax, 500       ; Different base frequency
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    mov dx, 30        ; Shorter delay for second frequency
+delay3_collision:
+    dec dx
+    jnz delay3_collision
+    
+    loop explosion_loop
+    
+    ; Echo effect (fading out)
+    mov cx, 40        ; Length of echo
+    mov bx, 800       ; Echo starting frequency
+echo_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, bx
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Longer delay for echo
+    mov dx, cx
+    add dx, 100      ; Base delay
+delay4_collision:
+    dec dx
+    jnz delay4_collision
+    
+    sub bx, 10       ; Decrease frequency for fade-out
+    
+    loop echo_loop
+    
+    ; Turn off speaker
+    in al, 61h
+    and al, 11111100b
+    out 61h, al
+    
+    pop bx
+    pop dx
+    pop cx
+    pop ax
+    ret
+
+treasure_sound:
+    ; Set frequency for treasure sound
+    mov al, 0xB6            ; Command byte: channel 2, mode 3 (square wave), access mode lobyte/hibyte
+    out 0x43, al            ; Send to PIT control port
+    mov ax, 0x0453          ; Frequency divisor (adjust for sound pitch, e.g., A4 note = 440 Hz)
+    out 0x42, al            ; Send low byte to channel 2 data port
+    mov al, ah
+    out 0x42, al            ; Send high byte to channel 2 data port
+
+    ; Enable PC speaker
+    in al, 0x61             ; Read current state of port 61h (speaker control)
+    or al, 0x03             ; Set bits 0 and 1 to enable speaker and select channel 2
+    out 0x61, al            ; Write back to port 61h
+
+    ; Delay loop for sound duration
+    mov cx, [delay_count]
+delay_loop:
+    loop delay_loop
+    ; Disable PC speaker
+    in al, 0x61             ; Read current state of port 61h
+    and al, 0xFC            ; Clear bits 0 and 1 to turn off speaker
+    out 0x61, al            ; Write back to port 61h
+
+    ret
+
+victory_sound:
+    push ax
+    push bx
+    push cx
+    push dx
+
+    ; Play a short victory fanfare
+    mov cx, 100         ; Duration of fanfare
+victory_loop:
+    mov al, 182         ; Command byte for square wave
+    out 0x43, al        ; Send to PIT control port
+    mov ax, 900         ; Frequency value for C5 note (523 Hz)
+    out 0x42, al        ; Send low byte to channel 2 data port
+    mov al, ah
+    out 0x42, al        ; Send high byte to channel 2 data port
+
+    ; Enable PC speaker
+    in al, 0x61
+    or al, 0x03
+    out 0x61, al
+
+    ; Delay loop
+    mov dx, 10000
+delay_loop_victory:
+    dec dx
+    jnz delay_loop_victory
+
+    ; Disable PC speaker
+    in al, 0x61
+    and al, 0xFC
+    out 0x61, al
+
+    loop victory_loop
+
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+
+printnum: 
+	push bp 
+	mov bp, sp 
+	push es 
+	push ax 
+	push bx 
+	push cx 
+	push dx 
+	push di 
+	mov ax, 0xb800 
+	mov es, ax ; point es to video base 
+	mov ax, [bp+4] ; load number in ax 
+	mov bx, 10 ; use base 10 for division 
+	mov cx, 0 ; initialize count of digits
+	
+	nextdigit: mov dx, 0 ; zero upper half of dividend 
+		div bx ; divide by 10 
+		add dl, 0x30 ; convert digit into ascii value 
+		push dx ; save ascii value on stack 
+		inc cx ; increment count of values 
+		cmp ax, 0 ; is the quotient zero 
+		jnz nextdigit ; if no divide it again
+		
+	mov di, 140 ; point di to 70th column
+	
+	nextpos: pop dx ; remove a digit from the stack 
+		mov dh, 0x07 ; use normal attribute 
+		mov [es:di], dx ; print char on screen 
+		add di, 2 ; move to next screen location 
+		loop nextpos ; repeat for all digits on stack 
+	pop di 
+	pop dx 
+	pop cx 
+	pop bx 
+	pop ax
+	pop es 
+	mov sp, bp
+	pop bp 
+	ret 2
+	
 start:
     call clrscreen
 	call MazeGen
@@ -480,9 +738,14 @@ start:
 	main_loop:
 		push word [rows]
 		call move_player
+		push word [player_score]
+		call printnum
+		cmp word [exit_game], 1
+		je exit
 		jmp main_loop
 	
 exit:
+	
     mov ax, 0x4c00
     int 21h
 
