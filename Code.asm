@@ -24,7 +24,7 @@ maze1:
     db 1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,3,0,1,1,0,0,0,0,0,0,0,0,0,1,1
     db 1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1
-    db 1,1,1,1,1,0,5,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    db 1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 maze2: 
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1      
@@ -48,7 +48,7 @@ maze2:
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,4,0,0,1,1
 	db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,1,1,1
 	db 1,1,0,0,0,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1
-	db 1,1,0,5,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+	db 1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 	
 maze3:	
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
@@ -60,9 +60,9 @@ maze3:
 	db 1,1,1,1,1,0,0,0,0,1,1,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1
 	db 1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1
 	db 1,1,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,3,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1
-	db 1,1,0,0,0,1,1,1,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0
+	db 1,1,0,0,0,1,1,1,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1
 	db 1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,5
-	db 1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,4,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,0,0,1,1,0,0,0,0
+	db 1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,4,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,0,0,1,1,0,0,0,1
 	db 1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1
 	db 1,1,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1
 	db 1,1,0,4,1,1,0,0,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1
@@ -96,7 +96,7 @@ maze4:
     db 1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1
     db 1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1
-    db 1,1,0,5,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+    db 1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1	
 
 rows1 dw 22              ; Number of rows
 cols1 dw 42             ; Number of columns
@@ -107,11 +107,19 @@ cols dw 0
 maze_chars db 178, 0x02,  0xE8, 0x9B, 0xE3, 0x20 ; Ascii of  game elements such as wall, player, treasure, enemy, pie and space
 maze_colors db 0x02, 0x03,  0x04, 0x8E, 0x06, 0x02  ; Respective colors of game elemnts
 
+delay_count dw 0xFFFF
+message: db 'Press Enter to Play!', 0
+instructions: db 'Use WASD/Arrow keys to move, Space to activate Batman mode', 0
+about: db 'Project developed by Mujtaba (23L-0545) and Hajirah (23L-0929)', 0  
+exit_flag: dw 0    ; Add a flag to control load screen exit
+
 section .bss
-maze_copy resb 22*42   ; Reserve 22*22 bytes for maze_copy
+maze_copy resb 22*42   ; Reserve 22*42 bytes for maze_copy
 player_pos resw 1
 last_key resb 1          ; Add storage for last key pressed
 first_time resb 1
+player_score resb 1
+exit_game resb 1
 section .text
 
 copy_maze:
@@ -229,11 +237,6 @@ display_maze:
 			mov ah, [maze_colors]
 			jmp next_column
 			
-		print_player:
-			mov al, [maze_chars + 1]
-			mov ah, [maze_colors + 1]
-			jmp next_column
-			
 		print_enemy:
 			mov al, [maze_chars + 2]
 			mov ah, [maze_colors + 2]
@@ -242,6 +245,11 @@ display_maze:
 		print_treasure:
 			mov al, [maze_chars + 3]
 			mov ah, [maze_colors + 3]
+			jmp next_column
+			
+		print_player:
+			mov al, [maze_chars + 1]
+			mov ah, [maze_colors + 1]
 			jmp next_column
 			
 		print_end:
@@ -343,9 +351,33 @@ move_player:
 		cmp byte [maze_copy + si], 1  ; Check if new position is a wall
 		je end_move                   
 		cmp byte [maze_copy + si], 5  ; Check if player is on exit character
-		je exit
+		je play_exitgame
+		cmp byte [maze_copy + si], 3
+		je play_collision
+		cmp byte [maze_copy + si], 4
+		je play_treasure_sound
 		
-		
+	play_beep:
+		call beep
+		inc word [player_score]
+		jmp update_position
+	play_collision:
+		call collision_sound
+		mov word [exit_game], 1
+		jmp update_position
+	play_treasure_sound:
+		add word [player_score], 12
+		call treasure_sound
+		jmp update_position
+	play_exitgame:
+		cmp byte [maze_copy + si], 5
+		jne skip_victory_sound
+		call victory_sound
+		skip_victory_sound:
+		mov word [exit_game], 1
+	
+	
+	update_position:
 		; Update player position
 		mov byte [maze_copy + di], 0  ; Clear old position
 		mov byte [maze_copy + si], 2  ; Set new position
@@ -357,7 +389,7 @@ move_player:
     push word [rows]
     push word [cols]
     call display_maze
-	
+
 	
 end_move:
 	mov [last_key], al	
@@ -405,7 +437,7 @@ MazeGen:
     ; Generate a random number between 1 and 4
     mov ax, dx
     xor dx, dx
-    mov cx, 5 ; Divide by 4 to get a number between 0 and 3
+    mov cx, 5 ; Divide by 5 to get a number between 0 and 4
     div cx
     add dl, 1 ; Add 1 to get a number between 1 and 4
 
@@ -453,9 +485,1313 @@ end_mazegen:
     pop cx
     pop bp
     ret
+	
+beep:
+    push ax   ; Save registers
+    
+    mov al, 182         ; Prepare for countdown value
+    out 43h, al        ; Send to control word register
+    
+    mov ax, 2153       ; Frequency value: 1193180/desired_frequency
+    out 42h, al        ; Output low byte
+    mov al, ah         ; Output high byte
+    out 42h, al
+    
+    in al, 61h         ; Get current value of port 61h
+    or al, 00000011b   ; Turn on bits 0 and 1
+    out 61h, al        ; Send new value to port
+    
+    ; Delay loop
+    mov cx, 0FFFFh     ; Set delay counter
+delay1_beep:
+    loop delay1_beep        ; Loop until cx = 0
+    
+    ; Turn off speaker
+    in al, 61h         ; Get current value
+    and al, 11111100b  ; Turn off bits 0 and 1
+    out 61h, al        ; Send new value
+    
+    pop ax            ; Restore registers
+    ret
 
+collision_sound:
+    push ax
+    push cx
+    push dx
+    push bx
+    
+    ; Initial impact sound (high to low)
+    mov cx, 80          ; Length of initial impact
+    mov bx, 300        ; Starting frequency
+impact_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, bx
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Turn speaker on
+    in al, 61h
+    or al, 00000011b
+    out 61h, al
+    
+    ; Dynamic delay
+    mov dx, 100
+delay1_collision:
+    dec dx
+    jnz delay1_collision
+    
+    add bx, 50         ; Change frequency
+    
+    loop impact_loop
+    
+    ; Explosion effect (rapid frequency modulation)
+    mov cx, 150        ; Length of explosion
+explosion_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, cx        ; Use counter for frequency
+    add ax, 1000      ; Base frequency
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Quick pulse effect
+    mov dx, 50
+delay2_collision:
+    dec dx
+    jnz delay2_collision
+    
+    ; Second frequency in pulse
+    mov al, 182
+    out 43h, al
+    mov ax, cx
+    add ax, 500       ; Different base frequency
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    mov dx, 30        ; Shorter delay for second frequency
+delay3_collision:
+    dec dx
+    jnz delay3_collision
+    
+    loop explosion_loop
+    
+    ; Echo effect (fading out)
+    mov cx, 40        ; Length of echo
+    mov bx, 800       ; Echo starting frequency
+echo_loop:
+    mov al, 182
+    out 43h, al
+    mov ax, bx
+    out 42h, al
+    mov al, ah
+    out 42h, al
+    
+    ; Longer delay for echo
+    mov dx, cx
+    add dx, 100      ; Base delay
+delay4_collision:
+    dec dx
+    jnz delay4_collision
+    
+    sub bx, 10       ; Decrease frequency for fade-out
+    
+    loop echo_loop
+    
+    ; Turn off speaker
+    in al, 61h
+    and al, 11111100b
+    out 61h, al
+    
+    pop bx
+    pop dx
+    pop cx
+    pop ax
+    ret
+
+treasure_sound:
+    ; Set frequency for treasure sound
+    mov al, 0xB6            ; Command byte: channel 2, mode 3 (square wave), access mode lobyte/hibyte
+    out 0x43, al            ; Send to PIT control port
+    mov ax, 0x0453          ; Frequency divisor (adjust for sound pitch, e.g., A4 note = 440 Hz)
+    out 0x42, al            ; Send low byte to channel 2 data port
+    mov al, ah
+    out 0x42, al            ; Send high byte to channel 2 data port
+
+    ; Enable PC speaker
+    in al, 0x61             ; Read current state of port 61h (speaker control)
+    or al, 0x03             ; Set bits 0 and 1 to enable speaker and select channel 2
+    out 0x61, al            ; Write back to port 61h
+
+    ; Delay loop for sound duration
+    mov cx, [delay_count]
+delay_loop:
+    loop delay_loop
+    ; Disable PC speaker
+    in al, 0x61             ; Read current state of port 61h
+    and al, 0xFC            ; Clear bits 0 and 1 to turn off speaker
+    out 0x61, al            ; Write back to port 61h
+
+    ret
+
+victory_sound:
+    push ax
+    push bx
+    push cx
+    push dx
+
+    ; Play a short victory fanfare
+    mov cx, 100         ; Duration of fanfare
+victory_loop:
+    mov al, 182         ; Command byte for square wave
+    out 0x43, al        ; Send to PIT control port
+    mov ax, 900         ; Frequency value for C5 note (523 Hz)
+    out 0x42, al        ; Send low byte to channel 2 data port
+    mov al, ah
+    out 0x42, al        ; Send high byte to channel 2 data port
+
+    ; Enable PC speaker
+    in al, 0x61
+    or al, 0x03
+    out 0x61, al
+
+    ; Delay loop
+    mov dx, 10000
+delay_loop_victory:
+    dec dx
+    jnz delay_loop_victory
+
+    ; Disable PC speaker
+    in al, 0x61
+    and al, 0xFC
+    out 0x61, al
+
+    loop victory_loop
+
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+
+printnum: 
+	push bp 
+	mov bp, sp 
+	push es 
+	push ax 
+	push bx 
+	push cx 
+	push dx 
+	push di 
+	mov ax, 0xb800 
+	mov es, ax ; point es to video base 
+	mov ax, [bp+4] ; load number in ax 
+	mov bx, 10 ; use base 10 for division 
+	mov cx, 0 ; initialize count of digits
+	
+	nextdigit: mov dx, 0 ; zero upper half of dividend 
+		div bx ; divide by 10 
+		add dl, 0x30 ; convert digit into ascii value 
+		push dx ; save ascii value on stack 
+		inc cx ; increment count of values 
+		cmp ax, 0 ; is the quotient zero 
+		jnz nextdigit ; if no divide it again
+		
+	mov di, 140 ; point di to 70th column
+	
+	nextpos: pop dx ; remove a digit from the stack 
+		mov dh, 0x07 ; use normal attribute 
+		mov [es:di], dx ; print char on screen 
+		add di, 2 ; move to next screen location 
+		loop nextpos ; repeat for all digits on stack 
+	pop di 
+	pop dx 
+	pop cx 
+	pop bx 
+	pop ax
+	pop es 
+	mov sp, bp
+	pop bp 
+	ret 2
+	
+strlen: 
+	push bp 
+	mov bp,sp 
+	push es 
+	push cx 
+	push di
+	
+	les di, [bp+4] ; point es:di to string 
+	mov cx, 0xffff ; load maximum number in cx 
+	xor al, al ; load a zero in al 
+	repne scasb ; find zero in the string 
+	mov ax, 0xffff ; load maximum number in ax 
+	sub ax, cx ; find change in cx 
+	dec ax ; exclude null from length
+	
+	pop di 
+	pop cx 
+	pop es 
+	pop bp 
+	ret 4 
+; subroutine to print a string 
+; takes the x position, y position, attribute, and address of a null 
+; terminated string as parameters 
+printstr: 
+	push bp 
+	mov bp, sp 
+	push es 
+	push ax 
+	push cx 
+	push si 
+	push di 
+	
+	push ds ; push segment of string 
+	mov ax, [bp+4] 
+	push ax ; push offset of string 
+	call strlen ; calculate string length
+	
+	cmp ax, 0 ; is the string empty 
+	jz exit_printstr ; no printing if string is empty
+	mov cx, ax ; save length in cx 
+	
+	mov ax, 0xb800 
+	mov es, ax ; point es to video base 
+	mov al, 80 ; load al with columns per row 
+	mul byte [bp+8] ; multiply with y position 
+	add ax, [bp+10] ; add x position 
+	shl ax, 1 ; turn into byte offset 
+	mov di,ax ; point di to required location 
+	mov si, [bp+4] ; point si to string 
+	mov ah, [bp+6] ; load attribute in ah
+	
+	cld ; auto increment mode 
+	nextchar: 
+		lodsb ; load next char in al 
+		stosw ; print char/attribute pair 
+		loop nextchar ; repeat for the whole string 
+	exit_printstr: 
+	pop di 
+	pop si 
+	pop cx 
+	pop ax 
+	pop es 
+	pop bp 
+	ret 8
+
+load_frame:
+	push bp
+    mov bp, sp
+    push ax
+    push es
+    push bx
+    push cx
+    push dx
+    push si 
+    push di
+	
+	mov ax, 0xb800
+    mov es, ax
+    
+	mov di, 2136
+	mov word [es:di], 0x07DA
+	add di, 2
+	
+	mov cx, 21
+	mov ax, 0x07C4
+	cld
+	rep stosw
+	
+	mov word [es:di], 0x07BF
+
+	add di, 116
+	mov word [es:di], 0x07B3
+	
+	add di, 44
+	mov word [es:di], 0x07B3
+	
+	add di, 116
+	mov word [es:di], 0x07C0
+    
+	add di, 2
+	mov cx, 21
+	mov ax, 0x07C4
+	cld
+	rep stosw
+	
+	mov word [es:di], 0x07D9
+	
+	pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+	pop es
+    pop ax
+    mov sp, bp
+    pop bp
+    ret
+
+loading_bar:
+    push bp
+    mov bp, sp
+    push ax
+    push es
+    push bx
+    push cx
+    push dx
+    push si 
+    push di
+    
+    mov ax, 0xb800
+    mov es, ax
+    
+    mov dx, 1
+    animate_loop:
+        ; Check if exit flag is set
+        cmp word [exit_flag], 1
+        je end_animation
+        
+        mov bx, 7
+        mov di, 2298
+        l1_animate:
+            ; Print "Press Enter to Play"
+            mov ax, 30 
+            push ax
+            mov ax, 16 
+            push ax
+            mov ax, 0x82
+            push ax
+            mov ax, message
+            push ax
+            call printstr
+			
+			; Print game instructions
+			mov ax, 10 
+            push ax
+            mov ax, 18 
+            push ax
+            mov ax, 0x01
+            push ax
+            mov ax, instructions
+            push ax
+            call printstr
+            
+            ; Print developer credits
+            mov ax, 8 
+            push ax
+            mov ax, 20 
+            push ax
+            mov ax, 0x0E
+            push ax
+            mov ax, about
+            push ax
+            call printstr
+            
+			call logo
+            call load_frame
+            mov ax, 0x03FE
+            mov cx, 3
+            cld
+            rep stosw
+            call delay_load
+            call clrscreen
+            
+            ; Check for Enter key press
+            mov ah, 1       ; Check if key is available
+            int 16h
+            jz no_key      ; If no key, continue animation
+            
+            mov ah, 0      ; Get the key
+            int 16h
+            cmp ah, 0x1C   ; Is it Enter (scan code 0x1C)?
+            jne no_key     ; If not Enter, continue animation
+            
+            mov word [exit_flag], 1  ; Set exit flag if Enter pressed
+            jmp end_animation
+            
+            no_key:
+            dec bx
+            cmp bx, 0
+            jne l1_animate
+            
+        dec dx
+        cmp dx, 0
+        jne animate_loop
+        
+    end_animation:
+    pop di
+    pop si
+    pop dx
+    pop cx
+    pop bx
+    pop es
+    pop ax
+    mov sp, bp
+    pop bp
+    ret
+
+
+delay_load:
+
+	push cx
+	mov cx, 25 ; change the values to increase delay time
+
+	delay_loop1_load:
+
+		push cx
+		mov cx, 0xFFFF
+
+		delay_loop2_load:
+
+		loop delay_loop2_load
+
+		pop cx
+
+		loop delay_loop1_load
+
+	pop cx
+
+	ret
+	
+logo:  ; Procedure to display the logo
+    push bp
+    mov bp, sp
+    push ax
+    push es
+    push bx
+    push cx
+    push di
+
+    mov ax, VIDEO_MEMORY
+    mov es, ax
+	; MAZE
+	mov di, 46
+	mov ax, 0x07DB
+	mov cx, 3
+	cld
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 8
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 4
+	mov cx, 5
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 4
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 206
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 4
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l1_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l1_logo
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	mov cx, 2
+	l2_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l2_logo
+	
+	add di, 2
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 4
+	l3_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l3_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	mov di, 366
+	
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 6
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 4
+	mov cx, 5
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 526
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l4_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l4_logo
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 4
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l5_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l5_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	mov di, 686
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 4
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 4
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 846
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 12
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	mov cx, 6
+	l6_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l6_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	mov cx, 6
+	l7_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l7_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	;RUNNER
+	mov di, 1148
+	mov cx, 6
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 4
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 3
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 6
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 1308
+	
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l8_logo:
+		add di, 2	
+		mov word [es:di], 0x07CD
+	loop l8_logo
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 4
+	l9_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l9_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l10_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l10_logo
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 1468
+	mov cx, 6
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 4
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	
+	add di, 4
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 5
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 6
+	mov cx, 6
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	mov di, 1628
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l11_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l11_logo
+	
+	add di, 2 
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 8
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+		
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+		
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l12_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l12_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	mov cx, 2
+	l13_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l13_logo
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	mov di, 1788
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 6
+	rep stosw
+	
+	mov word [es:di], 0x07C9
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	
+	add di, 4
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	
+	add di, 4
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov cx, 4
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 2
+	mov cx, 7
+	rep stosw
+	
+	mov word [es:di], 0x07BB
+	
+	add di, 2
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	add di, 6
+	mov cx, 2
+	rep stosw
+	
+	mov word [es:di], 0x07BA
+	
+	mov di, 1948
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 4
+	mov word [es:di], 0x07C8
+	
+	mov cx, 5
+	l14_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l14_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+
+	add di, 4
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov word [es:di], 0x07C8
+	
+	mov cx, 3
+	l15_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l15_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov word [es:di], 0x07C8
+	
+	mov cx, 3
+	l16_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l16_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	mov cx, 6
+	l17_logo:
+		add di, 2
+		mov word [es:di], 0x07CD
+	loop l17_logo
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 2
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	add di, 6
+	mov word [es:di], 0x07C8
+	
+	add di, 2
+	mov word [es:di], 0x07CD
+	
+	add di, 2
+	mov word [es:di], 0x07BC
+	
+	pop di
+    pop cx
+    pop bx
+    pop es
+    pop ax
+    mov sp, bp
+    pop bp
+    ret
+
+	
 start:
     call clrscreen
+	load_loop:
+       call loading_bar
+       cmp word [exit_flag], 1    ; Check if Enter was pressed
+       jne load_loop              ; If not, continue animation
+	call clrscreen
 	call MazeGen
     push maze_copy               ; Use the copied maze as input
     push word [rows]
@@ -471,12 +1807,19 @@ start:
 	mov ah, 1
 	int 16h
 	
+	call beep
+	
 	main_loop:
+		push word [player_score]
+		call printnum
 		push word [rows]
 		call move_player
+		cmp word [exit_game], 1
+		je exit
 		jmp main_loop
 	
 exit:
+	
     mov ax, 0x4c00
     int 21h
 
