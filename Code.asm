@@ -4,36 +4,36 @@ jmp start
 section .data
 maze1: 
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-    db 1,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
+    db 1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,1,1
     db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,4,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,0,0,1,1
-    db 1,1,0,3,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1
+    db 1,1,1,3,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,1,1
     db 1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,4,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,1
-    db 1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,1,1,0,3,1,1,1,1,0,0,1,1
+    db 1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,1,1,1,3,1,1,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,3,0,0,0,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,1,0,0,1,1
-    db 1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,4,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,1,1
-    db 1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,3,0,1,1,0,0,0,0,0,0,0,0,0,1,1
+    db 1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,3,0,0,4,0,1,1,0,0,1,1,0,0,0,0,0,1,1
+    db 1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,3,1,1,1,0,0,0,0,0,0,0,0,0,1,1
     db 1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
 
 maze2: 
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1      
-	db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1
+	db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,1,1
 	db 1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1    
 	db 1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,0,0,1,1,0,4,0,0,1,1,0,0,1,1,0,0,1,1     
 	db 1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,1,0,0,1,1
 	db 1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1
-	db 1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,3,0,1,1,0,0,0,0,0,0,1,1
+	db 1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,3,1,1,1,0,0,0,0,0,0,1,1
 	db 1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1
 	db 1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1
 	db 1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1
@@ -44,7 +44,7 @@ maze2:
 	db 1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1
 	db 1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1
 	db 1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1
-	db 1,1,0,0,0,0,0,0,0,0,2,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,1,1,1,1,0,3,1,1
+	db 1,1,0,0,0,0,0,0,0,0,2,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,3,1,1
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,4,0,0,1,1
 	db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,1,1,1,1
 	db 1,1,0,0,0,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,1,1
@@ -52,7 +52,7 @@ maze2:
 	
 maze3:	
 	db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-	db 1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1
+	db 1,1,1,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,6,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1
 	db 1,1,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1
 	db 1,1,0,0,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0,0,1,1,1,1,0,0,1,1
 	db 1,1,0,0,0,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1,1,0,2,0,0,1,1
@@ -66,7 +66,7 @@ maze3:
 	db 1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,1,1
 	db 1,1,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1
 	db 1,1,0,4,1,1,0,0,1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,1
-	db 1,1,0,0,1,1,0,0,1,1,0,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,0,1,1
+	db 1,1,1,3,1,1,0,0,1,1,0,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,0,1,1
 	db 1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,3,0,0,0,1,1
 	db 1,1,0,0,1,1,1,1,1,1,0,0,1,1,1,0,0,1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,0,0,1,1
 	db 1,1,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,1,1,0,1,1,0,0,1,1,1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1
@@ -76,12 +76,12 @@ maze3:
 	
 maze4:
     db 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-    db 1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,2,0,1,1
+    db 1,1,0,0,0,0,1,1,0,0,0,6,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,2,0,1,1
     db 1,1,0,0,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1
-    db 1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,1
+    db 1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,4,1,1,0,0,1,1
     db 1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,3,1,1
     db 1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,1,1
-    db 1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,0,0,1,1,1,1,0,0,1,1
+    db 1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,1,1,3,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,3,0,0,0,0,0,0,0,0,1,1,0,0,1,1
     db 1,1,4,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1
     db 1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1,1
@@ -104,8 +104,8 @@ cols1 dw 42             ; Number of columns
 rows dw 0
 cols dw 0
 
-maze_chars db 178, 0x02,  0xE8, 0x9B, 0xE3, 0x20 ; Ascii of  game elements such as wall, player, treasure, enemy, pie and space
-maze_colors db 0x02, 0x03,  0x04, 0x8E, 0x06, 0x02  ; Respective colors of game elemnts
+maze_chars db 178, 0x02,  0xE8, 0x24, 0xE3, 0x20, 0x02, 0x04 ; Ascii of  game elements such as wall, player, treasure, enemy, pie, space, batman, diamond-treasure
+maze_colors db 0x02, 0x03,  0x04, 0x8E, 0x06, 0x02, 0x05, 0x07  ; Respective colors of game elemnts
 
 delay_count dw 0xFFFF
 message: db 'Press Enter to Play!', 0
@@ -113,12 +113,21 @@ instructions: db 'Use WASD/Arrow keys to move, Space to activate Batman mode', 0
 about: db 'Project developed by Mujtaba (23L-0545) and Hajirah (23L-0929)', 0  
 exit_flag: dw 0    ; Add a flag to control load screen exit
 
+tickcount: dw 0
+seconds: dw 0
+mins: dw 0
+old_timer   dw 0    ; Store original timer interrupt vector
+old_timer_seg dw 0  ; Store original timer segment
+batman_mode_flag    dw 0    ; Flag to track if batman mode is active
+batman_was_active dw 0		; Flag to track if batman mode was used so it cannot be used anymore
+batman_timer        dw 0    ; Timer for batman mode duration
+BATMAN_DURATION    equ 180  ; Duration in ticks (about 10 seconds)
 section .bss
 maze_copy resb 22*42   ; Reserve 22*42 bytes for maze_copy
 player_pos resw 1
 last_key resb 1          ; Add storage for last key pressed
 first_time resb 1
-player_score resb 1
+player_score resw 1
 exit_game resb 1
 section .text
 
@@ -227,7 +236,9 @@ display_maze:
 			cmp al, 3
 			je print_enemy
 			cmp al, 4
-			je print_treasure
+			je print_treasure_1
+			cmp al, 6
+			je print_treasure_2
 			cmp al, 5
 			je print_end
 			jmp print_space
@@ -242,12 +253,24 @@ display_maze:
 			mov ah, [maze_colors + 2]
 			jmp next_column
 
-		print_treasure:
+		print_treasure_1:
 			mov al, [maze_chars + 3]
 			mov ah, [maze_colors + 3]
 			jmp next_column
-			
+		
+		print_treasure_2:
+			mov al, [maze_chars + 7]
+			mov ah, [maze_colors + 7]
+			jmp next_column
+		
 		print_player:
+			cmp word [batman_mode_flag], 1
+			jne skip_batman_char
+			mov al, [maze_chars + 6]
+			mov ah, [maze_colors + 6]
+			jmp next_column
+			
+			skip_batman_char:
 			mov al, [maze_chars + 1]
 			mov ah, [maze_colors + 1]
 			jmp next_column
@@ -291,7 +314,24 @@ display_maze:
     pop bp
     ret 6
 
-
+batman_mode:
+	push bp
+    mov bp, sp
+    push ax
+    push bx
+	
+	cmp word [batman_was_active], 0
+	jne skip_batman
+	mov word [batman_mode_flag], 1    ; Activate batman mode
+	mov word [batman_timer], BATMAN_DURATION    ; Set duration timer
+	mov word [batman_was_active], 1
+	
+	skip_batman:
+	pop bx
+    pop ax
+    mov sp, bp
+    pop bp
+    ret
 move_player:
     push bp
     mov bp, sp
@@ -330,6 +370,8 @@ move_player:
     je move_down
     cmp al, 0x20         ; 'd' key
     je move_right
+	cmp al, 0x39
+	je activate_batman
     jmp end_move
     
 	move_up:
@@ -346,6 +388,10 @@ move_player:
 
 	move_right:
 		inc si              ; Move right one column
+		jmp check_move
+	
+	activate_batman:
+		call batman_mode
 		
 	check_move:
 		cmp byte [maze_copy + si], 1  ; Check if new position is a wall
@@ -355,18 +401,26 @@ move_player:
 		cmp byte [maze_copy + si], 3
 		je play_collision
 		cmp byte [maze_copy + si], 4
-		je play_treasure_sound
+		je play_treasure_sound_1
+		cmp byte [maze_copy + si], 6
+		je play_treasure_sound_2
 		
 	play_beep:
 		call beep
-		inc word [player_score]
+		;inc word [player_score]
 		jmp update_position
 	play_collision:
+		cmp word [batman_mode_flag], 1
+		je update_position
 		call collision_sound
 		mov word [exit_game], 1
 		jmp update_position
-	play_treasure_sound:
+	play_treasure_sound_1:
 		add word [player_score], 12
+		call treasure_sound
+		jmp update_position
+	play_treasure_sound_2:
+		add word [player_score], 6
 		call treasure_sound
 		jmp update_position
 	play_exitgame:
@@ -1784,8 +1838,166 @@ logo:  ; Procedure to display the logo
     pop bp
     ret
 
+; Timer interrupt service routine
+timer:
+    push ax
+    inc word [cs:tickcount]  ; Increment tick count
+	
+	cmp word [batman_mode_flag], 1
+	jne continue_timer
+	dec word [batman_timer]
+	cmp word [batman_timer], 0
+	jne continue_timer
+	mov word [batman_mode_flag], 0
+	
+	continue_timer:
+    cmp word [cs:tickcount], 18
+    jne skip_timer
+
+    mov word [cs:tickcount], 0
+    inc word [seconds]
+
+    cmp word [seconds], 60
+    jne skip_conversion
+
+    mov word [seconds], 0
+    inc word [mins]
+
+skip_conversion:
+    push word [seconds]
+    push word [mins]
+    call printTime  ; Print the time
+	
+
+
+skip_timer:
+    mov al, 0x20
+    out 0x20, al  ; End of interrupt
+    pop ax
+    iret
+
+; Subroutine to print a number in the format "MM:SS"
+printTime:
+    push bp
+    mov bp, sp
+    push es
+    push ax
+    push bx
+    push cx
+    push dx
+    push di
+	
+    mov ax, 0xb800  ; Point es to video base
+    mov es, ax
+
+    ; Print minutes
+    push word [bp+4]  ; Push minutes value
+    call printTimeMinutes
+	
+    ; Print seconds
+    push word [bp+6]  ; Push seconds value
+    call printTimeSeconds
+
+	
+    pop di
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    pop es
+    pop bp
+    ret 4  ; Return and clean up stack
+
+; Subroutine to print minutes
+printTimeMinutes:
+    push bp
+    mov bp, sp
+    push es
+    push ax
+    push bx
+    push cx
+    push dx
+    push di
+
+    mov ax, 0xb800  ; Point es to video base
+    mov es, ax
+    mov ax, [bp+4]  ; Load minutes value
+    mov bx, 10      ; Use base 10 for division
+    mov cx, 0       ; Initialize count of digits
+
+nextDigitMin:
+    mov dx, 0       ; Zero upper half of dividend
+    div bx         ; Divide by 10
+    add dl, 0x30    ; Convert digit into ASCII value
+    push dx        ; Save ASCII value on stack
+    inc cx         ; Increment count of values
+    cmp ax, 0      ; Is the quotient zero?
+    jnz nextDigitMin  ; If not, divide it again
+
+    mov di, 1910    ; Point di to 70th column
+nextPosMin:
+    pop dx         ; Remove a digit from the stack
+    mov dh, 0x07    ; Use normal attribute
+    mov [es:di], dx ; Print char on screen
+    add di, 2      ; Move to next screen location
+    loop nextPosMin ; Repeat for all digits on stack
+
+    pop di
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    pop es
+    pop bp
+    ret 2
+
+; Subroutine to print seconds
+printTimeSeconds:
+    push bp
+    mov bp, sp
+    push es
+    push ax
+    push bx
+    push cx
+    push dx
+    push di
+
+    mov ax, 0xb800  ; Point es to video base
+    mov es, ax
+    mov ax, [bp+4]  ; Load seconds value
+    mov bx, 10      ; Use base 10 for division
+    mov cx, 0       ; Initialize count of digits
+
+nextDigitSec:
+    mov dx, 0       ; Zero upper half of dividend
+    div bx         ; Divide by 10
+    add dl, 0x30    ; Convert digit into ASCII value
+    push dx        ; Save ASCII value on stack
+    inc cx         ; Increment count of values
+    cmp ax, 0      ; Is the quotient zero?
+    jnz nextDigitSec ; If not, divide it again
+	
+    mov di, 1912    ; Point di to 71th column
+	mov word [es:di], 0x073A
+	add di, 2
+nextPosSec:
+    pop dx         ; Remove a digit from the stack
+    mov dh, 0x07    ; Use normal attribute
+    mov [es:di], dx ; Print char on screen
+    add di, 2      ; Move to next screen location
+    loop nextPosSec ; Repeat for all digits on stack
+
+    pop di
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    pop es
+    pop bp
+    ret 2
 	
 start:
+	
     call clrscreen
 	load_loop:
        call loading_bar
@@ -1800,6 +2012,7 @@ start:
 	
 	xor ax, ax
 	mov es, ax
+	mov ax, [es:9*4]
 	cli
 	mov word [es:9*4], move_player
 	mov [es:9*4+2], cs
@@ -1809,7 +2022,33 @@ start:
 	
 	call beep
 	
+	time_hook:
+		xor ax, ax 
+		mov es, ax ; point es to IVT base 
+		mov ax, [es:8*4]
+		cli ; disable interrupts 
+		mov word [es:8*4], timer; store offset at n*4 
+		mov [es:8*4+2], cs ; store segment at n*4+2 
+		sti ; enable interrupts 
+		mov dx, time_hook ; end of resident portion 
+		add dx, 15 ; round up to next para 
+		mov cl, 4 
+		shr dx, cl ; number of paras
+	
 	main_loop:
+	
+		xor ax, ax 
+		mov es, ax ; point es to IVT base 
+		; ax, [es:8*4]
+		cli ; disable interrupts 
+		mov word [es:8*4], timer; store offset at n*4 
+		mov [es:8*4+2], cs ; store segment at n*4+2 
+		sti ; enable interrupts 
+		mov dx, time_hook ; end of resident portion 
+		add dx, 15 ; round up to next para 
+		mov cl, 4 
+		shr dx, cl ; number of paras
+		
 		push word [player_score]
 		call printnum
 		push word [rows]
@@ -1817,10 +2056,17 @@ start:
 		cmp word [exit_game], 1
 		je exit
 		jmp main_loop
-	
+		
 exit:
-	
-    mov ax, 0x4c00
+	cli
+    xor ax, ax
+    mov es, ax
+    mov ax, [old_timer]
+    mov [es:8*4], ax
+    mov ax, [old_timer_seg]
+    mov [es:8*4+2], ax
+    sti
+    mov ax, 0x3100
     int 21h
 
 VIDEO_MEMORY equ 0xb800
