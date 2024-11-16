@@ -216,7 +216,7 @@ display_maze:
     
     mov ax, VIDEO_MEMORY        ; Set video memory segment (color text mode)
     mov es, ax
-    mov di, 0                   ; Start at the top-left corner of the screen
+    mov di, 16                    ; Start at the top-left corner of the screen
 
     xor cx, cx
     mov si, [bp+8]
@@ -414,6 +414,7 @@ move_player:
 		je update_position
 		call collision_sound
 		mov word [exit_game], 1
+		call printLose
 		jmp update_position
 	play_treasure_sound_1:
 		add word [player_score], 12
@@ -427,6 +428,7 @@ move_player:
 		cmp byte [maze_copy + si], 5
 		jne skip_victory_sound
 		call victory_sound
+		call printWin
 		skip_victory_sound:
 		mov word [exit_game], 1
 	
@@ -754,10 +756,31 @@ printnum:
 		cmp ax, 0 ; is the quotient zero 
 		jnz nextdigit ; if no divide it again
 		
-	mov di, 140 ; point di to 70th column
+	mov di, 1246 ; point di to 70th column
+	
+	; Print "SCORE"
+    mov ah, 0x34       ; normal attribute
+    mov al, 'S'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'C'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'O'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'R'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'E'
+    mov [es:di], ax
+    add di, 2
+    mov al, ':'        ; Add a colon
+    mov [es:di], ax
+    add di, 2          ; Space after SCORE:
 	
 	nextpos: pop dx ; remove a digit from the stack 
-		mov dh, 0x07 ; use normal attribute 
+		mov dh, 0x34 ; use normal attribute 
 		mov [es:di], dx ; print char on screen 
 		add di, 2 ; move to next screen location 
 		loop nextpos ; repeat for all digits on stack 
@@ -1889,7 +1912,27 @@ printTime:
 	
     mov ax, 0xb800  ; Point es to video base
     mov es, ax
-
+	
+	 ; Print "TIME" text first
+    mov di, 2204    ; Position for "TIME" text
+    mov ah, 0x5F    ; Normal attribute
+    
+    mov al, 'T'     ; Print T
+    mov [es:di], ax
+    add di, 2
+    mov al, 'I'     ; Print I
+    mov [es:di], ax
+    add di, 2
+    mov al, 'M'     ; Print M
+    mov [es:di], ax
+    add di, 2
+    mov al, 'E'     ; Print E
+    mov [es:di], ax
+    add di, 2
+    mov al, ':'     ; Print :
+    mov [es:di], ax
+    add di, 2
+	
     ; Print minutes
     push word [bp+4]  ; Push minutes value
     call printTimeMinutes
@@ -1934,10 +1977,10 @@ nextDigitMin:
     cmp ax, 0      ; Is the quotient zero?
     jnz nextDigitMin  ; If not, divide it again
 
-    mov di, 1910    ; Point di to 70th column
+    mov di, 2214    ; Point di to 70th column
 nextPosMin:
     pop dx         ; Remove a digit from the stack
-    mov dh, 0x07    ; Use normal attribute
+    mov dh, 0xDF    ; Use normal attribute
     mov [es:di], dx ; Print char on screen
     add di, 2      ; Move to next screen location
     loop nextPosMin ; Repeat for all digits on stack
@@ -1977,12 +2020,12 @@ nextDigitSec:
     cmp ax, 0      ; Is the quotient zero?
     jnz nextDigitSec ; If not, divide it again
 	
-    mov di, 1912    ; Point di to 71th column
-	mov word [es:di], 0x073A
+    mov di, 2216    ; Point di to 71th column
+	mov word [es:di], 0xDF3A
 	add di, 2
 nextPosSec:
     pop dx         ; Remove a digit from the stack
-    mov dh, 0x07    ; Use normal attribute
+    mov dh, 0xDF    ; Use normal attribute
     mov [es:di], dx ; Print char on screen
     add di, 2      ; Move to next screen location
     loop nextPosSec ; Repeat for all digits on stack
@@ -1995,6 +2038,96 @@ nextPosSec:
     pop es
     pop bp
     ret 2
+
+printWin:
+    push bp
+    mov bp, sp
+    push es
+    push ax
+    push di
+    
+    mov ax, 0xb800
+    mov es, ax
+    mov di, 3324     ; Position for message
+    
+    ; Print "YOU WIN!"
+    mov ah, 0x0A     ; Normal attribute
+    mov al, 'Y'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'O'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'U'
+    mov [es:di], ax
+    add di, 2
+    mov al, ' '
+    mov [es:di], ax
+    add di, 2
+    mov al, 'W'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'I'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'N'
+    mov [es:di], ax
+    add di, 2
+    mov al, '!'
+    mov [es:di], ax
+    
+    pop di
+    pop ax
+    pop es
+    pop bp
+    ret
+
+; Subroutine to print "YOU LOSE"
+printLose:
+    push bp
+    mov bp, sp
+    push es
+    push ax
+    push di
+    
+    mov ax, 0xb800
+    mov es, ax
+    mov di, 3324     ; Position for message
+    
+    ; Print "YOU LOSE!"
+    mov ah, 0x09     ; Normal attribute
+    mov al, 'Y'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'O'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'U'
+    mov [es:di], ax
+    add di, 2
+    mov al, ' '
+    mov [es:di], ax
+    add di, 2
+    mov al, 'L'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'O'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'S'
+    mov [es:di], ax
+    add di, 2
+    mov al, 'E'
+    mov [es:di], ax
+    add di, 2
+    mov al, '!'
+    mov [es:di], ax
+    
+    pop di
+    pop ax
+    pop es
+    pop bp
+    ret
 	
 start:
 	
@@ -2022,18 +2155,18 @@ start:
 	
 	call beep
 	
-	time_hook:
-		xor ax, ax 
-		mov es, ax ; point es to IVT base 
-		mov ax, [es:8*4]
-		cli ; disable interrupts 
-		mov word [es:8*4], timer; store offset at n*4 
-		mov [es:8*4+2], cs ; store segment at n*4+2 
-		sti ; enable interrupts 
-		mov dx, time_hook ; end of resident portion 
-		add dx, 15 ; round up to next para 
-		mov cl, 4 
-		shr dx, cl ; number of paras
+	;time_hook:
+		; xor ax, ax 
+		; mov es, ax ; point es to IVT base 
+		; mov ax, [es:8*4]
+		; cli ; disable interrupts 
+		; mov word [es:8*4], timer; store offset at n*4 
+		; mov [es:8*4+2], cs ; store segment at n*4+2 
+		; sti ; enable interrupts 
+		; mov dx, time_hook ; end of resident portion 
+		; add dx, 15 ; round up to next para 
+		; mov cl, 4 
+		; shr dx, cl ; number of paras
 	
 	main_loop:
 	
@@ -2044,7 +2177,7 @@ start:
 		mov word [es:8*4], timer; store offset at n*4 
 		mov [es:8*4+2], cs ; store segment at n*4+2 
 		sti ; enable interrupts 
-		mov dx, time_hook ; end of resident portion 
+		;mov dx, time_hook ; end of resident portion 
 		add dx, 15 ; round up to next para 
 		mov cl, 4 
 		shr dx, cl ; number of paras
