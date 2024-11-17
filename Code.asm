@@ -2155,18 +2155,18 @@ start:
 	
 	call beep
 	
-	;time_hook:
-		; xor ax, ax 
-		; mov es, ax ; point es to IVT base 
-		; mov ax, [es:8*4]
-		; cli ; disable interrupts 
-		; mov word [es:8*4], timer; store offset at n*4 
-		; mov [es:8*4+2], cs ; store segment at n*4+2 
-		; sti ; enable interrupts 
-		; mov dx, time_hook ; end of resident portion 
-		; add dx, 15 ; round up to next para 
-		; mov cl, 4 
-		; shr dx, cl ; number of paras
+	time_hook:
+		xor ax, ax 
+		mov es, ax ; point es to IVT base 
+		mov ax, [es:8*4]
+		cli ; disable interrupts 
+		mov word [es:8*4], timer; store offset at n*4 
+		mov [es:8*4+2], cs ; store segment at n*4+2 
+		sti ; enable interrupts 
+		mov dx, time_hook ; end of resident portion 
+		add dx, 15 ; round up to next para 
+		mov cl, 4 
+		shr dx, cl ; number of paras
 	
 	main_loop:
 	
