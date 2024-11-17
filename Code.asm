@@ -114,8 +114,8 @@ about: db 'Project developed by Mujtaba (23L-0545) and Hajirah (23L-0929)', 0
 exit_flag: dw 0    ; Add a flag to control load screen exit
 
 tickcount: dw 0
-seconds: dw 0
-mins: dw 0
+seconds: dw 30
+mins: dw 1
 old_timer   dw 0    ; Store original timer interrupt vector
 old_timer_seg dw 0  ; Store original timer segment
 batman_mode_flag    dw 0    ; Flag to track if batman mode is active
@@ -1866,36 +1866,47 @@ timer:
     push ax
     inc word [cs:tickcount]  ; Increment tick count
 	
-	cmp word [batman_mode_flag], 1
-	jne continue_timer
-	dec word [batman_timer]
-	cmp word [batman_timer], 0
-	jne continue_timer
-	mov word [batman_mode_flag], 0
+    cmp word [batman_mode_flag], 1
+    jne continue_timer
+    dec word [batman_timer]
+    cmp word [batman_timer], 0
+    jne continue_timer
+    mov word [batman_mode_flag], 0
 	
-	continue_timer:
+continue_timer:
     cmp word [cs:tickcount], 18
     jne skip_timer
-
     mov word [cs:tickcount], 0
-    inc word [seconds]
-
-    cmp word [seconds], 60
-    jne skip_conversion
-
-    mov word [seconds], 0
-    inc word [mins]
-
+    
+    dec word [seconds]           ; Decrement seconds
+    cmp word [seconds], 0        ; Check if seconds reached zero
+    jg skip_conversion          ; If seconds > 0, continue normally
+    
+    ; If we get here, seconds is 0 or less
+    cmp word [mins], 0          ; Check if we have minutes left
+    je timer_finished           ; If no minutes, we're done
+    
+    dec word [mins]             ; Decrement minutes
+    mov word [seconds], 59      ; Reset seconds to 59
+    
 skip_conversion:
     push word [seconds]
     push word [mins]
-    call printTime  ; Print the time
-	
-
-
+    call printTime              ; Print the time
+    jmp skip_timer
+    
+timer_finished:
+    mov word [exit_game], 1
+	call printLose
+    mov word [seconds], 0       ; Ensure we show 00:00
+    mov word [mins], 0
+    push word [seconds]
+    push word [mins]
+    call printTime
+    
 skip_timer:
     mov al, 0x20
-    out 0x20, al  ; End of interrupt
+    out 0x20, al               ; End of interrupt
     pop ax
     iret
 
@@ -1929,7 +1940,7 @@ printTime:
     mov al, 'E'     ; Print E
     mov [es:di], ax
     add di, 2
-    mov al, ':'     ; Print :
+    mov al, ' '     ; Print space
     mov [es:di], ax
     add di, 2
 	
@@ -1993,8 +2004,7 @@ nextPosMin:
     pop es
     pop bp
     ret 2
-
-; Subroutine to print seconds
+	
 printTimeSeconds:
     push bp
     mov bp, sp
@@ -2004,32 +2014,32 @@ printTimeSeconds:
     push cx
     push dx
     push di
-
-    mov ax, 0xb800  ; Point es to video base
+    
+    mov ax, 0xb800       ; Point es to video base
     mov es, ax
-    mov ax, [bp+4]  ; Load seconds value
-    mov bx, 10      ; Use base 10 for division
-    mov cx, 0       ; Initialize count of digits
-
-nextDigitSec:
-    mov dx, 0       ; Zero upper half of dividend
-    div bx         ; Divide by 10
-    add dl, 0x30    ; Convert digit into ASCII value
-    push dx        ; Save ASCII value on stack
-    inc cx         ; Increment count of values
-    cmp ax, 0      ; Is the quotient zero?
-    jnz nextDigitSec ; If not, divide it again
-	
-    mov di, 2216    ; Point di to 71th column
-	mov word [es:di], 0xDF3A
-	add di, 2
-nextPosSec:
-    pop dx         ; Remove a digit from the stack
-    mov dh, 0xDF    ; Use normal attribute
-    mov [es:di], dx ; Print char on screen
-    add di, 2      ; Move to next screen location
-    loop nextPosSec ; Repeat for all digits on stack
-
+    mov ax, [bp+4]       ; Load seconds value
+    mov bx, 10           ; Use base 10 for division
+    
+    ; Always print two digits for seconds
+    mov di, 2216         ; Point di to position after colon
+    mov word [es:di], 0xDF3A  ; Print colon
+    add di, 2
+    
+    ; First digit (tens position)
+    mov dx, 0
+    div bx              ; Divide by 10
+    mov cl, dl          ; Save remainder (ones digit) in cl
+    add al, '0'         ; Convert quotient (tens digit) to ASCII
+    mov ah, 0xDF        ; Normal attribute
+    mov [es:di], ax     ; Print tens digit
+    add di, 2
+    
+    ; Second digit (ones position)
+    mov al, cl          ; Get back the ones digit
+    add al, '0'         ; Convert to ASCII
+    mov ah, 0xDF        ; Normal attribute
+    mov [es:di], ax     ; Print ones digit
+    
     pop di
     pop dx
     pop cx
